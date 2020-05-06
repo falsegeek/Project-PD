@@ -70,7 +70,7 @@ def decrypt():
         print('Слишком большой текст\n')
         return
 
-    text = open('encode_t.txt', 'w')
+    text = open('encode_t.txt', 'w', encoding='utf-8')
     encode_bmp = open('encode_t.bmp', 'rb')
 
     encode_bmp.seek(BMP_HEADER_SIZE)
@@ -87,7 +87,7 @@ def decrypt():
             symvol |= image_byte
         if chr(symvol) == '\n' and len(os.linesep) == 2:
             size += 1
-        print('символ #{0} d {1:c}'.format(size, symvol))
+        print('символ #{0} и {1:c}'.format(size, symvol))
         size += 1
         text.write(chr(symvol))
 
