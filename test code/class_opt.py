@@ -20,9 +20,9 @@ class TXT(object):
 
     def encode(self, source_txt, container_txt, output_txt, rus_letters, eng_letters):
 
-        self.source_txt = source_txt
-        self.container_txt = container_txt
-        self.output_txt = output_txt
+        self.source_txt = open('t.txt', 'r')
+        self.container_txt = open('elementary.txt', 'r')
+        self.output_txt = open('encode_elementary.txt', 'w')
         self.rus_letters = rus_letters
         self.eng_letters = eng_letters
         letter_to_encode = 0
