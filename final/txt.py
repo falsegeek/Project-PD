@@ -337,7 +337,7 @@ class Ui_txt_screen(object):
         self.description_dec.setText(_translate("txt_screen", "Выбрать данные в формате \"txt\" и начать дешифровку: "))
         self.start_dec.setText(_translate("txt_screen", "Расшифровать"))
         self.group_enc.setTitle(_translate("txt_screen", "Зашифровать"))
-        self.description_enc.setText(_translate("txt_screen", "Выберать данные в формате \"txt\" и начать шифровку:"))
+        self.description_enc.setText(_translate("txt_screen", "Выбрать данные в формате \"txt\" и начать шифровку:"))
         self.start_enc.setText(_translate("txt_screen", "Зашифровать"))
 
 
