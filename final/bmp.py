@@ -123,33 +123,24 @@ class Ui_bmp_screen(object):
             f.write((154).to_bytes(4, byteorder="little"))  # 154 bytes (122+32) Size of the BMP file
             f.write((0).to_bytes(2, byteorder="little"))  # Unused
             f.write((0).to_bytes(2, byteorder="little"))  # Unused
-            f.write((122).to_bytes(4,
-                                   byteorder="little"))  # 122 bytes (14+108) Offset where the pixel array (bitmap data) can be found
-            f.write(
-                (108).to_bytes(4, byteorder="little"))  # 108 bytes Number of bytes in the DIB header (from this point)
+            f.write((122).to_bytes(4,byteorder="little"))  # 122 bytes (14+108) Offset where the pixel array (bitmap data) can be found
+            f.write((108).to_bytes(4, byteorder="little"))  # 108 bytes Number of bytes in the DIB header (from this point)
             f.write((4).to_bytes(4, byteorder="little"))  # 4 pixels (left to right order) Width of the bitmap in pixels
-            f.write(
-                (2).to_bytes(4, byteorder="little"))  # 2 pixels (bottom to top order) Height of the bitmap in pixels
+            f.write((2).to_bytes(4, byteorder="little"))  # 2 pixels (bottom to top order) Height of the bitmap in pixels
             f.write((1).to_bytes(2, byteorder="little"))  # 1 plane Number of color planes being used
             f.write((32).to_bytes(2, byteorder="little"))  # 32 bits Number of bits per pixel
             f.write((3).to_bytes(4, byteorder="little"))  # 3 BI_BITFIELDS, no pixel array compression used
             f.write((32).to_bytes(4, byteorder="little"))  # 32 bytes Size of the raw bitmap data (including padding)
-            f.write(
-                (2835).to_bytes(4, byteorder="little"))  # 2835 pixels/metre horizontal Print resolution of the image,
-            f.write((2835).to_bytes(4,
-                                    byteorder="little"))  # 2835 pixels/metre vertical   72 DPI × 39.3701 inches per metre yields 2834.6472
+            f.write((2835).to_bytes(4, byteorder="little"))  # 2835 pixels/metre horizontal Print resolution of the image,
+            f.write((2835).to_bytes(4,byteorder="little"))  # 2835 pixels/metre vertical   72 DPI × 39.3701 inches per metre yields 2834.6472
             f.write((0).to_bytes(4, byteorder="little"))  # 0 colors Number of colors in the palette
             f.write((0).to_bytes(4, byteorder="little"))  # 0 important colors 0 means all colors are important
-            f.write(
-                b'\x00\x00\xFF\x00')  # 00FF0000 in big-endian Red channel bit mask (valid because BI_BITFIELDS is specified)
-            f.write(
-                b'\x00\xFF\x00\x00')  # 0000FF00 in big-endian Green channel bit mask (valid because BI_BITFIELDS is specified)
-            f.write(
-                b'\xFF\x00\x00\x00')  # 000000FF in big-endian Blue channel bit mask (valid because BI_BITFIELDS is specified)
+            f.write(b'\x00\x00\xFF\x00')  # 00FF0000 in big-endian Red channel bit mask (valid because BI_BITFIELDS is specified)
+            f.write(b'\x00\xFF\x00\x00')  # 0000FF00 in big-endian Green channel bit mask (valid because BI_BITFIELDS is specified)
+            f.write(b'\xFF\x00\x00\x00')  # 000000FF in big-endian Blue channel bit mask (valid because BI_BITFIELDS is specified)
             f.write(b'\x00\x00\x00\xFF')  # FF000000 in big-endian Alpha channel bit mask
             f.write(b' niW')  # little-endian "Win " LCS_WINDOWS_COLOR_SPACE
-            f.write((0).to_bytes(36,
-                                 byteorder="little"))  # CIEXYZTRIPLE Color Space endpoints	Unused for LCS "Win " or "sRGB"
+            f.write((0).to_bytes(36,byteorder="little"))  # CIEXYZTRIPLE Color Space endpoints	Unused for LCS "Win " or "sRGB"
             f.write((0).to_bytes(4, byteorder="little"))  # 0 Red Gamma Unused for LCS "Win " or "sRGB"
             f.write((0).to_bytes(4, byteorder="little"))  # 0 Green Gamma Unused for LCS "Win " or "sRGB"
             f.write((0).to_bytes(4, byteorder="little"))  # 0 Blue Gamma Unused for LCS "Win " or "sRGB"
