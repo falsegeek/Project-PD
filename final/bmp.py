@@ -1,24 +1,17 @@
-# -*- coding: utf-8 -*-
-
-# Form implementation generated from reading ui file 'bmp.ui'
-#
-# Created by: PyQt5 UI code generator 5.13.0
-#
-# WARNING! All changes made in this file will be lost!
-
-
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QApplication, QWidget, QInputDialog, QLineEdit, QFileDialog
 import os
 
 class Ui_bmp_screen(object):
-
     def setupUi(self, bmp_screen):
         bmp_screen.setObjectName("bmp_screen")
         bmp_screen.resize(415, 352)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("images/icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         bmp_screen.setWindowIcon(icon)
+        
+        # группа где находятся все элементы шифрования
+        # описание самой группы
         self.group_enc = QtWidgets.QGroupBox(bmp_screen)
         self.group_enc.setGeometry(QtCore.QRect(10, 10, 391, 161))
         font = QtGui.QFont()
@@ -26,6 +19,8 @@ class Ui_bmp_screen(object):
         font.setWeight(75)
         self.group_enc.setFont(font)
         self.group_enc.setObjectName("group_enc")
+        
+        # описание окна с текстом 1
         self.description_enc1 = QtWidgets.QLabel(self.group_enc)
         self.description_enc1.setGeometry(QtCore.QRect(10, 80, 301, 16))
         font = QtGui.QFont()
@@ -33,6 +28,8 @@ class Ui_bmp_screen(object):
         font.setWeight(50)
         self.description_enc1.setFont(font)
         self.description_enc1.setObjectName("description_enc1")
+        
+        # описание окна с текстом 2
         self.description_enc2 = QtWidgets.QLabel(self.group_enc)
         self.description_enc2.setGeometry(QtCore.QRect(10, 20, 301, 16))
         font = QtGui.QFont()
@@ -40,18 +37,26 @@ class Ui_bmp_screen(object):
         font.setWeight(50)
         self.description_enc2.setFont(font)
         self.description_enc2.setObjectName("description_enc2")
+        
+        # выбор степени сжатия
+        # степень сжатия 1
         self.radio_1_enc = QtWidgets.QRadioButton(self.group_enc)
         self.radio_1_enc.setGeometry(QtCore.QRect(10, 50, 31, 17))
         self.radio_1_enc.setObjectName("radio_1_enc")
+        # степень сжатия 2
         self.radio_2_enc = QtWidgets.QRadioButton(self.group_enc)
         self.radio_2_enc.setGeometry(QtCore.QRect(40, 50, 31, 17))
         self.radio_2_enc.setObjectName("radio_2_enc")
+        # степень сжатия 4
         self.radio_4_enc = QtWidgets.QRadioButton(self.group_enc)
         self.radio_4_enc.setGeometry(QtCore.QRect(70, 50, 31, 17))
         self.radio_4_enc.setObjectName("radio_4_enc")
+        # степень сжатия 8
         self.radio_8 = QtWidgets.QRadioButton(self.group_enc)
         self.radio_8.setGeometry(QtCore.QRect(100, 50, 31, 17))
         self.radio_8.setObjectName("radio_8")
+        
+        # кнопка начала шифрования
         self.start_enc = QtWidgets.QPushButton(self.group_enc)
         self.start_enc.setGeometry(QtCore.QRect(20, 110, 75, 23))
         font = QtGui.QFont()
@@ -59,12 +64,17 @@ class Ui_bmp_screen(object):
         font.setWeight(50)
         self.start_enc.setFont(font)
         self.start_enc.setObjectName("start_enc")
+        
+        # описание картинки
         self.bmp_img = QtWidgets.QLabel(self.group_enc)
         self.bmp_img.setGeometry(QtCore.QRect(300, 30, 81, 91))
         self.bmp_img.setText("")
         self.bmp_img.setPixmap(QtGui.QPixmap("images/bmp.png"))
         self.bmp_img.setScaledContents(True)
         self.bmp_img.setObjectName("bmp_img")
+        
+        # группа где находятся все элементы дешифрования
+        # описание самой группы
         self.group_dec = QtWidgets.QGroupBox(bmp_screen)
         self.group_dec.setGeometry(QtCore.QRect(10, 180, 391, 161))
         font = QtGui.QFont()
@@ -72,6 +82,8 @@ class Ui_bmp_screen(object):
         font.setWeight(75)
         self.group_dec.setFont(font)
         self.group_dec.setObjectName("group_dec")
+        
+        # описание окна с текстом 1
         self.description_dec = QtWidgets.QLabel(self.group_dec)
         self.description_dec.setGeometry(QtCore.QRect(10, 80, 301, 16))
         font = QtGui.QFont()
@@ -79,6 +91,8 @@ class Ui_bmp_screen(object):
         font.setWeight(50)
         self.description_dec.setFont(font)
         self.description_dec.setObjectName("description_dec")
+        
+        # кнопка начала дешифрования
         self.start_dec = QtWidgets.QPushButton(self.group_dec)
         self.start_dec.setGeometry(QtCore.QRect(20, 110, 75, 23))
         font = QtGui.QFont()
@@ -86,24 +100,37 @@ class Ui_bmp_screen(object):
         font.setWeight(50)
         self.start_dec.setFont(font)
         self.start_dec.setObjectName("start_dec")
+        
+        # описание картинки
         self.dec_img = QtWidgets.QLabel(self.group_dec)
         self.dec_img.setGeometry(QtCore.QRect(310, 40, 71, 71))
         self.dec_img.setText("")
         self.dec_img.setPixmap(QtGui.QPixmap("images/encryption (1).png"))
         self.dec_img.setScaledContents(True)
         self.dec_img.setObjectName("dec_img")
+        
+        # выбор степени сжатия
+        # степень сжатия 4
         self.radio_4_dec = QtWidgets.QRadioButton(self.group_dec)
         self.radio_4_dec.setGeometry(QtCore.QRect(70, 50, 31, 17))
         self.radio_4_dec.setObjectName("radio_4_dec")
+        
+        # степень сжатия 2
         self.radio_2_dec = QtWidgets.QRadioButton(self.group_dec)
         self.radio_2_dec.setGeometry(QtCore.QRect(40, 50, 31, 17))
         self.radio_2_dec.setObjectName("radio_2_dec")
+        
+        # степень сжатия 1
         self.radio_1_dec = QtWidgets.QRadioButton(self.group_dec)
         self.radio_1_dec.setGeometry(QtCore.QRect(10, 50, 31, 17))
         self.radio_1_dec.setObjectName("radio_1_dec")
+        
+        # степень сжатия 8
         self.radio_8_dec = QtWidgets.QRadioButton(self.group_dec)
         self.radio_8_dec.setGeometry(QtCore.QRect(100, 50, 31, 17))
         self.radio_8_dec.setObjectName("radio_8_dec")
+        
+        # описание окна с текстом
         self.description_enc2_2 = QtWidgets.QLabel(self.group_dec)
         self.description_enc2_2.setGeometry(QtCore.QRect(10, 20, 301, 16))
         font = QtGui.QFont()
@@ -117,7 +144,7 @@ class Ui_bmp_screen(object):
         self.start_enc.clicked.connect(self.start_encode)  # выбор файла для зашифровки
         self.start_dec.clicked.connect(self.start_decrypt)  # выбор файла для расшифровки
 
-    def start_elementaryBMP(self):
+    def start_elementaryBMP(self): # создание bmp файла
         with open("Temporary_fileBMP.bmp", "w+b") as f:
             f.write(b'BM')  # ID field (42h, 4Dh)
             f.write((154).to_bytes(4, byteorder="little"))  # 154 bytes (122+32) Size of the BMP file
@@ -154,7 +181,7 @@ class Ui_bmp_screen(object):
             f.write(b'\xFF\xFF\xFF\xFF')  # 255 255 255 255 White (Alpha: 255), Pixel (0,3)
             f.close()
 
-    def start_encode(self):
+    def start_encode(self): # начало шифровки
         #text_size = os.stat('t.txt').st_size
         #image_size = os.stat('t.bmp').st_size
         # if text_size >= image_size * degree/8 -54:
@@ -211,7 +238,7 @@ class Ui_bmp_screen(object):
         elementary_bmp.close()
         encode_bmp.close()
 
-    def start_decrypt(self):
+    def start_decrypt(self): # начало дешифровки
 
         #image_size = os.stat('encode_t.bmp').st_size
         #if to_size >= image_size * degree / 8 - 54:
@@ -266,7 +293,7 @@ class Ui_bmp_screen(object):
         text.close()
         encode_bmp.close()
 
-    def masks(self, degree):
+    def masks(self, degree): # создание маски для отделения информации
         text_mask = 0b11111111
         image_mask = 0b11111111
 
@@ -297,7 +324,7 @@ class Ui_bmp_screen(object):
         self.radio_8_dec.setText(_translate("bmp_screen", "8"))
         self.description_enc2_2.setText(_translate("bmp_screen", "Выбрать степень сжатия"))
 
-    def file_browser(self):  # функция для выбора файла (закрывает программу после выполнения*)
+    def file_browser(self):  # функция для выбора файла
         filename = QFileDialog.getOpenFileName()
         path = filename[0]
         print(path)
