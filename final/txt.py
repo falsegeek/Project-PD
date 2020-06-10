@@ -88,7 +88,7 @@ class Ui_txt_screen(object):
         self.start_dec.clicked.connect(self.start_decrypt)  # выбор файла для расшифровки
 
     def start_elementaryTXT(self): # создание txt файла
-        container_txt = open('Temporary_file.txt', 'w')
+        container_txt = open('Temporary_fileTXT.txt', 'w')
         container_txt.write('Hello! I am Jane. I am 21. I am a student. I consider it to be a special time in my life. Student life is always full of fun, new impressions and knowledge. I like being a student. Each day I learn something new and communicate with my friends. We meet almost every day. Sometimes we stay at the university after classes to prepare our homework for the next day or just to talk about our student life.I like spending time with my friends. We often visit each other. I can talk with them for hours. They can help me and support me in any situation. I can say the same about my parents, with whom I live. My mother is a very wise woman. She understands me. We are not only close relatives, but also close friends. We have the same favourite colours — green and blue. These are the colours of nature and the sky. Our family hobby is travelling. We like seeing new places, meeting new people, exchanging our impressions. We often travel in summer and in winter. I adore Turkey, Egypt, and France. These countries have their ownr')
         container_txt.write('ditions, unique nature and culture.My other hobbies are music and theatre. I often visit the theatre. I sympathize with the characters on the stage. I try to understand them and, finally, I find it easier to solve my own problems watching the play. I understand my family and friends better. I am grateful to them for being so close to me, for their understanding and support. a well-known fact, that the geographical position very often influences the climate and weather of any country. The United States is no exception. Here, the Cascade Mountains and the Sierra Nevada Mountains, due to their being close to the west coast, catch the largest share of the rain off the Pacific Ocean. As a result there is too little rain for almost the whole western half of the Unites States, which lies in the of the mountains. In a great part of that territory farmers must depend on irrigation water from the snows or rains. One of the most important geographic boundaries in the United States is the 50-centimeter rainfall line. It ')
         container_txt.write('runs north and south almost through the middle of the country. East of the line, farming here is easy and the population is relatively large. West of the line, you can find man-made irrigation systems, dry-farming and grazing. There are fewer people living here. West of the RockyMountains, there are vast areas without any trees. In this part of the country are the deserts which receive as little as over 12 centimeters of rainfall a year. If there were no mountains or oceans, then the amount of the heat would progress from north to south. Instead, there are all kinds of unexpected differences in climate. For example, all along the western coast, the temperature changes little between summer and winter. The climate along the northern part of this coast is similar to that of England.But in the north central part of the country, summer and winter are very different. There the average difference between July and January is 36 degrees centigrade The variations in temperature within the United States have had a mark')
@@ -210,8 +210,8 @@ class Ui_txt_screen(object):
         rus_letters = "КАМОНВЕРХСТорухаес"
         eng_letters = "KAMOHBEPXCTopyxaec"
         source_txt = open(path, 'r')  # filename
-        container_txt = open('Temporary_file.txt', 'r')
-        output_txt = open('Encrypted.txt', 'w')
+        container_txt = open('Temporary_fileTXT.txt', 'r')
+        output_txt = open('EncryptedTXT.txt', 'w')
 
         message_length = os.stat(path).st_size
 
@@ -277,7 +277,7 @@ class Ui_txt_screen(object):
         rus_letters = "КАМОНВЕРХСТорухаес"
         eng_letters = "KAMOHBEPXCTopyxaec"
         encoded_txt = open(path, 'r')
-        decoded_txt = open('Decrypted.txt', 'w', encoding='utf-8')
+        decoded_txt = open('DecryptedTXT.txt', 'w', encoding='utf-8')
         # symbols_to_read = int(input('Cколько символов закодированно \n'))
 
         read = 0
