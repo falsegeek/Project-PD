@@ -219,9 +219,12 @@ class Ui_wav_screen(object):
 
         return True
 
+
+
     def start_decrypt(self):
-        input_wav_name = open('pip_elementary.wav', 'rb')
-        text_file = open('t.txt', 'w')
+        path = self.file_browser()
+        #input_wav_name = open('Encrypted.wav', 'rb')
+        #text_file = open(path, 'w')
         #degree = int(input('Выберите степерь шифрования 1/2/4/8/16\n'))
         #symbols_to_read = int(input('символ'))
 
@@ -229,18 +232,59 @@ class Ui_wav_screen(object):
             #print("степерь шифрования 1/2/4/8/16")
             #return False
 
-        input_wav = open('pip_elementary.wav', 'rb')
+        input_wav = open('Encrypted.wav', 'rb')
 
         wav_header = input_wav.read(WAV_HEADER_SIZE)
         data_size = int.from_bytes(wav_header[40:44], byteorder='little')
 
-        if symbols_to_read >= data_size * degree / 16:
-            print("Много")
-            input_wav.close()
-            return False
 
-        text = open('t_elementary.txt', 'w', encoding='utf-8')
 
+        #if symbols_to_read >= data_size * degree / 16:
+            #print("Много")
+            #input_wav.close()
+            #return False
+
+        text = open(path, 'w', encoding='utf-8')
+
+        _, sample_mask = self.create_masks(degree)
+        sample_mask = ~sample_mask
+
+        data = input_wav.read(data_size)
+        symbols_to_read = 200
+        read = 0
+        read1 = ''
+        read2 = ''
+        while read1 != '@':
+            two_symbols = 0
+            for step in range(0, 16, degree):
+                sample = int.from_bytes(data[:2], byteorder='little') & sample_mask
+                data = data[2:]
+
+                two_symbols <<= degree
+                two_symbols |= sample
+
+            first_symbol = two_symbols >> 8
+            text.write(chr(first_symbol))
+            read += 1
+
+            if chr(first_symbol) == '\n' and len(os.linesep) == 2:
+                read += 1
+
+            if symbols_to_read - read > 0:
+                second_symbol = two_symbols & 0b0000000011111111
+                text.write(chr(second_symbol))
+                read1 = str(chr(second_symbol))
+                if read1 != '@':
+                    read2 += read1
+
+                read += 1
+
+                if chr(second_symbol) == '\n' and len(os.linesep) == 2:
+                    read += 1
+
+
+
+        symbols_to_read = int(read2)
         _, sample_mask = self.create_masks(degree)
         sample_mask = ~sample_mask
 
