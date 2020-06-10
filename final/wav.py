@@ -113,7 +113,7 @@ class Ui_wav_screen(object):
 
        print("Create file using wave and writeframes twice in each iteration")
 
-       noise_output = wave.open('Temporary_file.wav', 'w')
+       noise_output = wave.open('Temporary_fileWAV.wav', 'w')
        noise_output.setparams((2, 2, 44100, 0, 'NONE', 'not compressed'))
 
        d1 = datetime.datetime.now()
@@ -152,7 +152,7 @@ class Ui_wav_screen(object):
         #os.remove(pathh)
         #os.remove('Temporary_file.raw')
 
-        input_wav = open('Temporary_file.wav', 'rb')
+        input_wav = open('Temporary_fileWAV.wav', 'rb')
         text_len = os.stat(path).st_size
 
         wav_header = input_wav.read(WAV_HEADER_SIZE)
@@ -182,7 +182,7 @@ class Ui_wav_screen(object):
         text.close()
         text = open(path, 'r')
 
-        output_wav = open('Encrypted.wav', 'wb')
+        output_wav = open('EncryptedWAV.wav', 'wb')
         output_wav.write(wav_header)
 
         data = input_wav.read(data_size)
@@ -255,7 +255,7 @@ class Ui_wav_screen(object):
             #input_wav.close()
             #return False
 
-        text = open('Decrypted.txt', 'w', encoding='utf-8')
+        text = open('DecryptedWAV.txt', 'w', encoding='utf-8')
 
         text_mask, sample_mask = self.create_masks(degree)
         sample_mask = ~sample_mask
