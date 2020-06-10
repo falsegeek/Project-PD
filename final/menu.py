@@ -1,9 +1,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-from bmp import Ui_bmp_screen
-from txt import Ui_txt_screen
-from wav2 import Ui_wav_screen
-
+import os
 
 class Ui_menu(object):
     def setupUi(self, menu):
@@ -60,22 +57,13 @@ class Ui_menu(object):
         self.push_wav.clicked.connect(self.wav_screen)  # переход на окно шифрования wv
 
     def txt_screen(self):  # переход на окно шифрования txt
-        self.txt_screen = QtWidgets.QWidget()
-        self.ui = Ui_txt_screen()
-        self.ui.setupUi(self.txt_screen)
-        self.txt_screen.show()
+        os.system('python txt.py')
 
     def bmp_screen(self):  # переход на окно шифрования bmp
-        self.bmp_screen = QtWidgets.QWidget()
-        self.ui = Ui_bmp_screen()
-        self.ui.setupUi(self.bmp_screen)
-        self.bmp_screen.show()
+        os.system('python bmp.py')
 
     def wav_screen(self):  # переход на окно шифрования wav
-        self.wav_screen = QtWidgets.QWidget()
-        self.ui = Ui_wav_screen()
-        self.ui.setupUi(self.wav_screen)
-        self.wav_screen.show()
+        os.system('python wav.py')
 
     def retranslateUi(self, menu):
         _translate = QtCore.QCoreApplication.translate
