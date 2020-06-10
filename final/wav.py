@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-
-# Form implementation generated from reading ui file 'wav.ui'
-#
-# Created by: PyQt5 UI code generator 5.13.0
-#
-# WARNING! All changes made in this file will be lost!
 import struct
 import datetime
 import random
@@ -13,7 +6,6 @@ import wave
 import os
 from PyQt5.QtWidgets import QApplication, QWidget, QInputDialog, QLineEdit, QFileDialog
 
-
 class Ui_wav_screen(object):
     def setupUi(self, wav_screen):
         wav_screen.setObjectName("wav_screen")
@@ -21,6 +13,9 @@ class Ui_wav_screen(object):
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("images/icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         wav_screen.setWindowIcon(icon)
+        
+        # группа где находятся все элементы шифрования
+        # описание самой группы
         self.group_enc = QtWidgets.QGroupBox(wav_screen)
         self.group_enc.setGeometry(QtCore.QRect(10, 10, 391, 131))
         font = QtGui.QFont()
@@ -28,6 +23,8 @@ class Ui_wav_screen(object):
         font.setWeight(75)
         self.group_enc.setFont(font)
         self.group_enc.setObjectName("group_enc")
+        
+        # описание окна с текстом 
         self.description_enc1 = QtWidgets.QLabel(self.group_enc)
         self.description_enc1.setGeometry(QtCore.QRect(10, 20, 301, 16))
         font = QtGui.QFont()
@@ -35,6 +32,8 @@ class Ui_wav_screen(object):
         font.setWeight(50)
         self.description_enc1.setFont(font)
         self.description_enc1.setObjectName("description_enc1")
+        
+        # кнопка начала шифрования
         self.start_enc = QtWidgets.QPushButton(self.group_enc)
         self.start_enc.setGeometry(QtCore.QRect(110, 60, 91, 23))
         font = QtGui.QFont()
@@ -42,12 +41,17 @@ class Ui_wav_screen(object):
         font.setWeight(50)
         self.start_enc.setFont(font)
         self.start_enc.setObjectName("start_enc")
+        
+        # описание картинки
         self.wav_img = QtWidgets.QLabel(self.group_enc)
         self.wav_img.setGeometry(QtCore.QRect(300, 20, 81, 91))
         self.wav_img.setText("")
         self.wav_img.setPixmap(QtGui.QPixmap("images/wav.png"))
         self.wav_img.setScaledContents(True)
         self.wav_img.setObjectName("wav_img")
+        
+        # группа где находятся все элементы дешифрования
+        # описание самой группы
         self.group_dec = QtWidgets.QGroupBox(wav_screen)
         self.group_dec.setGeometry(QtCore.QRect(10, 150, 391, 111))
         font = QtGui.QFont()
@@ -55,6 +59,8 @@ class Ui_wav_screen(object):
         font.setWeight(75)
         self.group_dec.setFont(font)
         self.group_dec.setObjectName("group_dec")
+        
+        # описание окна с текстом
         self.description_dec = QtWidgets.QLabel(self.group_dec)
         self.description_dec.setGeometry(QtCore.QRect(10, 20, 301, 16))
         font = QtGui.QFont()
@@ -62,6 +68,8 @@ class Ui_wav_screen(object):
         font.setWeight(50)
         self.description_dec.setFont(font)
         self.description_dec.setObjectName("description_dec")
+        
+        # кнопка начала дешифрования
         self.start_dec = QtWidgets.QPushButton(self.group_dec)
         self.start_dec.setGeometry(QtCore.QRect(110, 60, 91, 23))
         font = QtGui.QFont()
@@ -69,6 +77,8 @@ class Ui_wav_screen(object):
         font.setWeight(50)
         self.start_dec.setFont(font)
         self.start_dec.setObjectName("start_dec")
+        
+        # описание картинки
         self.dec_img = QtWidgets.QLabel(self.group_dec)
         self.dec_img.setGeometry(QtCore.QRect(300, 20, 71, 71))
         self.dec_img.setText("")
@@ -81,7 +91,7 @@ class Ui_wav_screen(object):
         self.start_enc.clicked.connect(self.start_encode)  # выбор файла для зашифровки
         self.start_dec.clicked.connect(self.start_decrypt)  # выбор файла для расшифровки
 
-    def start_elementaryWAV(self):
+    def start_elementaryWAV(self): # создание wav файла
 
        ''' noise_output = wave.open('Temporary_file.wav', 'w')
         noise_output.setparams((2, 2, 44100, 0, 'NONE', 'not compressed'))
@@ -126,7 +136,7 @@ class Ui_wav_screen(object):
 
 
 
-    def start_encode(self):
+    def start_encode(self): # начало шифровки
         self.start_elementaryWAV()
         path = self.file_browser()
         #input_wav_name = open('Temporary_file.wav', 'rb')
@@ -221,7 +231,7 @@ class Ui_wav_screen(object):
 
 
 
-    def start_decrypt(self):
+    def start_decrypt(self): # начало дешифровки
         path = self.file_browser()
 
         #input_wav_name = open('Encrypted.wav', 'rb')
@@ -376,7 +386,7 @@ class Ui_wav_screen(object):
         input_wav.close()
         return True"""
 
-    def create_masks(sefl, degree):
+    def create_masks(sefl, degree): # создание маски для отделения информации
 
         text_mask = 0b1111111111111111
         sample_mask = 0b1111111111111111
@@ -398,7 +408,7 @@ class Ui_wav_screen(object):
         self.description_dec.setText(_translate("wav_screen", "Выбрать данные в формате \"wav\" и начать дешифровку:"))
         self.start_dec.setText(_translate("wav_screen", "Расшифровать"))
 
-    def file_browser(self):  # функция для выбора файла (закрывает программу после выполнения*)
+    def file_browser(self):  # функция для выбора файла
         filename = QFileDialog.getOpenFileName()
         path = filename[0]
         print(path)
