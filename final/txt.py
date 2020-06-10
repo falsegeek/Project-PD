@@ -9,6 +9,9 @@ class Ui_txt_screen(object):
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("images/icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         txt_screen.setWindowIcon(icon)
+        
+        # группа где находятся все элементы дешифрования
+        # описание самой группы
         self.group_dec = QtWidgets.QGroupBox(txt_screen)
         self.group_dec.setGeometry(QtCore.QRect(10, 130, 391, 111))
         font = QtGui.QFont()
@@ -16,6 +19,8 @@ class Ui_txt_screen(object):
         font.setWeight(75)
         self.group_dec.setFont(font)
         self.group_dec.setObjectName("group_dec")
+        
+        # описание окна с текстом
         self.description_dec = QtWidgets.QLabel(self.group_dec)
         self.description_dec.setGeometry(QtCore.QRect(10, 20, 301, 16))
         font = QtGui.QFont()
@@ -23,6 +28,8 @@ class Ui_txt_screen(object):
         font.setWeight(50)
         self.description_dec.setFont(font)
         self.description_dec.setObjectName("description_dec")
+        
+        # кнопка начала дешифрования
         self.start_dec = QtWidgets.QPushButton(self.group_dec)
         self.start_dec.setGeometry(QtCore.QRect(120, 60, 91, 23))
         font = QtGui.QFont()
@@ -30,12 +37,17 @@ class Ui_txt_screen(object):
         font.setWeight(50)
         self.start_dec.setFont(font)
         self.start_dec.setObjectName("start_dec")
+        
+        # описание картинки
         self.dec_img = QtWidgets.QLabel(self.group_dec)
         self.dec_img.setGeometry(QtCore.QRect(310, 20, 71, 71))
         self.dec_img.setText("")
         self.dec_img.setPixmap(QtGui.QPixmap("images/encryption (1).png"))
         self.dec_img.setScaledContents(True)
         self.dec_img.setObjectName("dec_img")
+        
+        # группа где находятся все элементы шифрования
+        # описание самой группы
         self.group_enc = QtWidgets.QGroupBox(txt_screen)
         self.group_enc.setGeometry(QtCore.QRect(10, 10, 391, 111))
         font = QtGui.QFont()
@@ -43,6 +55,8 @@ class Ui_txt_screen(object):
         font.setWeight(75)
         self.group_enc.setFont(font)
         self.group_enc.setObjectName("group_enc")
+        
+        # описание окна с текстом
         self.description_enc = QtWidgets.QLabel(self.group_enc)
         self.description_enc.setGeometry(QtCore.QRect(10, 20, 301, 16))
         font = QtGui.QFont()
@@ -50,6 +64,8 @@ class Ui_txt_screen(object):
         font.setWeight(50)
         self.description_enc.setFont(font)
         self.description_enc.setObjectName("description_enc")
+        
+        # кнопка начала шифрования
         self.start_enc = QtWidgets.QPushButton(self.group_enc)
         self.start_enc.setGeometry(QtCore.QRect(120, 60, 81, 23))
         font = QtGui.QFont()
@@ -57,6 +73,8 @@ class Ui_txt_screen(object):
         font.setWeight(50)
         self.start_enc.setFont(font)
         self.start_enc.setObjectName("start_enc")
+        
+        # описание картинки
         self.txt_img = QtWidgets.QLabel(self.group_enc)
         self.txt_img.setGeometry(QtCore.QRect(300, 10, 81, 91))
         self.txt_img.setText("")
@@ -68,9 +86,6 @@ class Ui_txt_screen(object):
         QtCore.QMetaObject.connectSlotsByName(txt_screen)
         self.start_enc.clicked.connect(self.start_encode)  # выбор файла для зашифровки
         self.start_dec.clicked.connect(self.start_decrypt)  # выбор файла для расшифровки
-
-        #self.start_enc.clicked.connect(self.start_encode)  # старт шифровки
-        # self.start_dec.clicked.connect(self.start_decrypt)
 
     def start_elementaryTXT(self):
         container_txt = open('Temporary_file.txt', 'w')
@@ -189,7 +204,7 @@ class Ui_txt_screen(object):
         container_txt.write('brought B.B. a Grammy award.long and distinguished career includes many musical collaborations. Young rock musicians, in particular, appreciate his contributions to their genre. In 1988 B.B. played guitar and sang on the hit song In a nutshell')
         container_txt.close()
 
-    def start_encode(self, path):
+    def start_encode(self, path): # начало шифровки
         self.start_elementaryTXT()
         path = self.file_browser()
         rus_letters = "КАМОНВЕРХСТорухаес"
@@ -257,7 +272,7 @@ class Ui_txt_screen(object):
 
         return True
 
-    def start_decrypt(self):
+    def start_decrypt(self): # начало дешифровки
         path = self.file_browser()
         rus_letters = "КАМОНВЕРХСТорухаес"
         eng_letters = "KAMOHBEPXCTopyxaec"
@@ -321,7 +336,7 @@ class Ui_txt_screen(object):
 
         return True
 
-    def file_browser(self):  # функция для выбора файла (закрывает программу после выполнения*)
+    def file_browser(self):  # функция для выбора файла
         filename = QFileDialog.getOpenFileName()
         path = filename[0]
         print(path)
