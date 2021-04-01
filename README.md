@@ -1,5 +1,4 @@
 # Project-PD Polytech
-# Наш сайт: https://shifrovanie.bitrix24.site/
 # Для запуска нашей программы Вам понадобится:
 1. Скачать и установить Python 3.7 или выше
 2. Установить в Python менеджер пакетов "pip"
